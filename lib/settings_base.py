@@ -55,10 +55,10 @@ REMOTE_JS_DEBUG = False
 # LESS CSS OPTIONS (Debug only).
 LESS_PREPROCESS = True  # Compile LESS with Node, rather than client-side JS?
 LESS_LIVE_REFRESH = False  # Refresh the CSS on save?
-LESS_BIN = 'lessc'
+LESS_BIN = '/usr/bin/lessc'
 
 # Path to stylus (to compile .styl files).
-STYLUS_BIN = 'stylus'
+STYLUS_BIN = 'node_modules/stylus/bin/stylus'
 
 # Path to cleancss (our CSS minifier).
 CLEANCSS_BIN = 'cleancss'
@@ -85,9 +85,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'HOST': '',
         'PORT': '',
-        'USER': '',
+        'USER': 'root',
         'PASSWORD': '',
-        'OPTIONS': {'init_command': 'SET storage_engine=InnoDB'},
+        'OPTIONS': {'init_command': 'SET storage_engine=InnoDB','unix_socket' : '/tmp/mysql.sock'},
         'TEST_CHARSET': 'utf8',
         'TEST_COLLATION': 'utf8_general_ci',
     },
@@ -186,7 +186,8 @@ DOMAIN = HOSTNAME
 
 # Full base URL for your main site including protocol.  No trailing slash.
 #   Example: https://addons.mozilla.org
-SITE_URL = 'http://%s' % DOMAIN
+#SITE_URL = 'http://%s' % DOMAIN
+SITE_URL = 'http://localhost:8000'
 
 # Domain of the services site.  This is where your API, and in-product pages
 # live.
@@ -1055,6 +1056,7 @@ VALIDATION_FAQ_URL = ('https://wiki.mozilla.org/AMO:Editors/EditorGuide/'
 
 ## Celery
 BROKER_URL = 'amqp://zamboni:zamboni@localhost:5672/zamboni'
+#BROKER_URL = 'amqp://guest:guest@localhost:5672/zamboni'
 BROKER_CONNECTION_TIMEOUT = 0.1
 CELERY_RESULT_BACKEND = 'amqp'
 CELERY_IGNORE_RESULT = True
@@ -1081,7 +1083,6 @@ CELERY_ROUTES = {
     'mkt.inapp_pay.tasks.fetch_product_image': {'queue': 'priority'},
     'mkt.webapps.tasks.index_webapps': {'queue': 'priority'},
     'mkt.webapps.tasks.unindex_webapps': {'queue': 'priority'},
-    'stats.tasks.update_monolith_stats': {'queue': 'priority'},
     'users.tasks.index_users': {'queue': 'priority'},
     'users.tasks.unindex_users': {'queue': 'priority'},
     'versions.tasks.update_supported_locales_single': {'queue': 'priority'},

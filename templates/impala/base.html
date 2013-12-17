@@ -62,7 +62,7 @@
         {% block site_header %}
           {# Well that's an awful tiny mozilla header #}
           <div id="global-header-tab">
-            <a href="//www.mozilla.org/" id="tabzilla">Mozilla</a>
+            <!--a href="//www.mozilla.org/" id="tabzilla">Mozilla</a-->
           </div>
           <div class="amo-header">
             <nav id="aux-nav" role="navigation" class="menu-nav c">
@@ -71,7 +71,7 @@
                   {% include "impala/user_login.html" %}
                 {% endif %}
                 {% block aux_nav %}
-                  <li>
+                  <!--li>
                     <a href="#" id="other-apps" title="{{ _('Find add-ons for other applications') }}">{{ _('Other Applications') }}</a>
                     <ul class="other-apps">
                       {% for app in amo.APP_USAGE %}
@@ -82,7 +82,7 @@
                         {% endif %}
                       {% endfor %}
                     </ul>
-                  </li>
+                  </li-->
                 {% endblock aux_nav %}
               </ul>
             </nav>
@@ -101,7 +101,7 @@
               {% endblock %}
             </div>
             {% if ADMIN_MESSAGE or settings.READ_ONLY %}
-              <div class="site-balloon" id="site-notice">
+              <!--div class="site-balloon" id="site-notice">
                 {% if ADMIN_MESSAGE %}
                   <p>{{ ADMIN_MESSAGE|safe }}</p>
                 {% endif %}
@@ -111,7 +111,7 @@
                     website maintenance. We'll be back to full capacity shortly.
                     {% endtrans %}</p>
                 {% endif %}
-              </div>
+              </div-->
             {% endif %}
             {% block amo_balloons %}
               {% if WEBAPPS %}
@@ -163,7 +163,7 @@
                   <p>
                     {% trans %}
                       Check out our
-                      <a class="mobile-link" href="#">Mobile Add-ons site</a>.
+                      <a class="mobile-link" href="#">Mobile Prefab site</a>.
                     {% endtrans %}
                   </p>
                   <a href="#" class="close">{{ _('Close') }}</a>
@@ -191,10 +191,10 @@
         <div id="add-to-collection" class="popup">
           <div class="collection-add-login">
             <p>{% trans %}
-              To create your own collections, you must have a Mozilla Add-ons account.
+              To create your own collections, you must have a Wavemaker prefab account.
             {% endtrans %}</p>
             <p class="register-button">
-              <a class="button" href="{{ remora_url('users/register') }}">{{ _('Create an Add-ons Account') }}</a>
+              <a class="button" href="{{ remora_url('users/register') }}">{{ _('Create an Prefab Account') }}</a>
             </p>
             <p>
               {% trans login=login_link() %}

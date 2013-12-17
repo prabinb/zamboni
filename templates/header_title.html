@@ -5,7 +5,7 @@
   {{ text|f(media('img/zamboni/app_icons/' + icon + '.png'))|safe }}</a>
 {%- endmacro %}
 {% if request.APP == amo.FIREFOX %}
-  {{ heading(_('<img alt="Firefox" src="{0}"> Add-ons'), 'firefox') }}
+  {{ heading(_('<img alt="" src="{0}"> Add-ons'), 'firefox') }}
 {% elif request.APP == amo.THUNDERBIRD %}
   {{ heading(_('<img alt="Thunderbird" src="{0}"> Add-ons'), 'thunderbird') }}
 {% elif request.APP == amo.MOBILE %}

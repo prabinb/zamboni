@@ -61,6 +61,8 @@ urlpatterns = patterns('',
     # Developer Hub.
     ('editors/', include('editors.urls')),
 
+#    (r'^admin/jsi18n/$', 'django.views.i18n.javascript_catalog'),
+
     # AMO admin (not django admin).
     ('^admin/', include('zadmin.urls')),
 
@@ -85,6 +87,7 @@ urlpatterns = patterns('',
     # Javascript translations.
     url('^jsi18n.js$', cache_page(60 * 60 * 24 * 365)(javascript_catalog),
         {'domain': 'javascript', 'packages': ['zamboni']}, name='jsi18n'),
+  #  ('^jsi18n/$', 'django.views.i18n.javascript_catalog'),
 
     # SAMO/API
     ('^api/', include('api.urls')),

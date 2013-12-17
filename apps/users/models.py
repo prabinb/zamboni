@@ -377,6 +377,7 @@ class UserProfile(amo.models.OnChangeMixin, amo.models.ModelBase):
         url = "%s%s" % (settings.SITE_URL,
                         reverse('users.confirm',
                                 args=[self.id, self.confirmationcode]))
+        log.debug("confirmation link (%s)", url)
         domain = settings.DOMAIN
         t = loader.get_template('users/email/confirm.ltxt')
         c = {'domain': domain, 'url': url, }

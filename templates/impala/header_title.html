@@ -1,8 +1,8 @@
 <h1 class="site-title">
 {% macro heading(app, text, icon) -%}
 <a href="{{ url('home') }}" title="{{ _('Return to the {0} Add-ons homepage')|f(request.APP.pretty) }}">
-  <img alt="{{ APP.pretty }}" src="{{ media('img/app-icons/med/' + icon + '.png')|safe }}">
-  {{ text }}
+  <img alt="" src="{{ media('img/app-icons/med/' + icon + '.png')|safe }}">
+  Prefab
 </a>
 {%- endmacro %}
 {% if request.APP == amo.FIREFOX %}

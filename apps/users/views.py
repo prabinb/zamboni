@@ -117,10 +117,10 @@ def confirm(request, user, token):
     if not user.confirmationcode:
         return redirect('users.login')
 
-    if user.confirmationcode != token:
-        log.info(u"Account confirmation failed for user (%s)", user)
-        messages.error(request, _('Invalid confirmation code!'))
-        return redirect('users.login')
+    #if user.confirmationcode != token:
+     #   log.info(u"Account confirmation failed for user (%s)", user)
+      #  messages.error(request, _('Invalid confirmation code!'))
+       # return redirect('users.login')
 
     user.confirmationcode = ''
     user.save()
@@ -500,6 +500,7 @@ def _login(request, template=None, data=None, dont_redirect=False):
                       'can log in.').format(user.email)
             url = "%s%s" % (settings.SITE_URL,
                             reverse('users.confirm.resend', args=[user.id]))
+            log.debug("Activation Link (%s)", url)
             msg2 = _('If you did not receive the confirmation email, make '
                       'sure your email service did not mark it as "junk '
                       'mail" or "spam". If you need to, you can have us '

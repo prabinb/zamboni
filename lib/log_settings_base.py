@@ -60,6 +60,14 @@ handlers = {
         'level': 'ERROR',
         'class': 'django_statsd.loggers.errors.StatsdHandler',
     },
+    'logfile': {
+        'level': 'DEBUG',
+        'class': 'logging.handlers.RotatingFileHandler',
+        'filename': './debug.log',
+        'maxBytes': 50000,
+        'backupCount': 2,
+        'formatter': 'debug',
+    },
 }
 
 loggers = {
@@ -86,6 +94,10 @@ loggers = {
     'suds': {
         'level': 'ERROR',
         'propagate': True
+    },
+    'django': {
+        'handlers': ['logfile'],
+        'level':    'DEBUG',
     },
 }
 
